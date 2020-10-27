@@ -17,8 +17,14 @@ all: ua_test
 
 UA_OBJS = test_ua.o userAgent.o \
                 operatingSystem.o bot.o browser.o
+
+OBJS_FOR_TEST = test.o userAgent.o operatingSystem.o bot.o browser.o
+
 ua_test: $(UA_OBJS)
 	$(CXX) -o $@ $(UA_OBJS) $(CXXLIBS)
+
+test: $(OBJS_FOR_TEST)
+	$(CXX) -o $@ $(OBJS_FOR_TEST) $(CXXLIBS)
 
 .PHONY: clean
 clean:
